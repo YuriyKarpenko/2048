@@ -1,0 +1,101 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:v="clr-namespace:game2048.av.Views"
+             xmlns:vm="clr-namespace:game2048.av.ViewModels"
+             mc:Ignorable="d" d:DesignWidth="400" d:DesignHeight="450"
+             x:Class="game2048.av.Views.MainView"
+             x:DataType="vm:VmMain">
+  <Design.DataContext>
+    <!-- This only sets the DataContext for the previewer in an IDE,
+         to set the actual DataContext for runtime, set the DataContext property in code (look at App.axaml.cs) -->
+    <vm:VmMain />
+  </Design.DataContext>
+
+    <Grid RowDefinitions="Auto, Auto, *, Auto, Auto">
+
+        <ItemsControl Grid.Row="0" Items="{Binding Cmds}">
+            <ItemsControl.ItemTemplate>
+                <DataTemplate>
+                    <!-- <v:UcButton /> -->
+                    <Button Classes="cmd"/>
+                </DataTemplate>
+            </ItemsControl.ItemTemplate>
+            <ItemsControl.ItemsPanel>
+                <ItemsPanelTemplate>
+                    <StackPanel Orientation="Horizontal"></StackPanel>
+                </ItemsPanelTemplate>
+            </ItemsControl.ItemsPanel>
+        </ItemsControl>
+        
+        <!-- <StackPanel Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="3" Orientation="Horizontal"> -->
+        <!--     <v:UcButton></v:UcButton> -->
+        <!--     <MenuItem Icon="{StaticResource pg_Undo}" Header="Undo"></MenuItem> -->
+        <!--     ~1~ <v:UcConfig DataContext="{Binding VmConfig}" /> @1@ -->
+        <!-- -->
+        <!--     <Button Command="{Binding VmGame.CmdReset}"> -->
+        <!--         <StackPanel Orientation="Horizontal"> -->
+        <!--             <TextBlock Text="Reset" /> -->
+        <!--             <PathIcon Data="{StaticResource pg_Refresh}" /> -->
+        <!--         </StackPanel> -->
+        <!--     </Button> -->
+        <!-- -->
+        <!--     <Button Command="{Binding CmdOption}" i:Attached.Icon="mdi-cog"> -->
+        <!--     </Button> -->
+        <!-- -->
+        <!--     <ToggleButton Command="{Binding CmdOption}" CommandParameter="{Binding $self.IsChecked}"> -->
+        <!--         <StackPanel Orientation="Horizontal"> -->
+        <!--             <TextBlock Text="Options" /> -->
+        <!--             <PathIcon Data="{StaticResource pg_Settings}" /> -->
+        <!--         </StackPanel> -->
+        <!--     </ToggleButton> -->
+        <!-- </StackPanel> -->
+
+        <TransitioningContentControl Grid.Row="2" Content="{Binding Content^}">
+            <TransitioningContentControl.DataTemplates>
+                <DataTemplate DataType="vm:VmConfig">
+                    <v:UcConfig />
+                </DataTemplate>
+                <DataTemplate DataType="vm:VmGame">
+                    <v:UcGame />
+                </DataTemplate>
+            </TransitioningContentControl.DataTemplates>
+            <TransitioningContentControl.PageTransition>
+                <PageSlide Orientation="Horizontal" Duration="0:00:00.500" />
+            </TransitioningContentControl.PageTransition>
+        </TransitioningContentControl>
+
+        <Canvas IsVisible="False" Grid.Row="4" Background="Yellow" Width="300" Height="300">
+            <!-- <Rectangle Fill="Blue" Width="63" Height="41" Canvas.Left="40" Canvas.Top="31"> -->
+            <!--     <Rectangle.OpacityMask> -->
+            <!--         <LinearGradientBrush StartPoint="0%,0%" EndPoint="100%,100%"> -->
+            <!--             <LinearGradientBrush.GradientStops> -->
+            <!--                 <GradientStop Offset="0" Color="Black"/> -->
+            <!--                 <GradientStop Offset="1" Color="Transparent"/> -->
+            <!--             </LinearGradientBrush.GradientStops> -->
+            <!--         </LinearGradientBrush> -->
+            <!--     </Rectangle.OpacityMask>      -->
+            <!-- </Rectangle> -->
+            <!-- <Ellipse Fill="Green" Width="58" Height="58" Canvas.Left="88" Canvas.Top="100"/> -->
+            <Path Fill="Orange" Data="M 0,0 c 0,0 50,0 50,-50 c 0,0 50,0 50,50 h -50 v 50 l -50,-50 Z" Canvas.Left="30"
+                  Canvas.Top="50" />
+            <Path Fill="OrangeRed" Canvas.Left="180" Canvas.Top="50">
+                <Path.Data>
+                    <PathGeometry>
+                        <PathFigure StartPoint="0,0" IsClosed="True">
+                            <QuadraticBezierSegment Point1="50,0" Point2="50,-50" />
+                            <QuadraticBezierSegment Point1="100,-50" Point2="100,0" />
+                            <LineSegment Point="50,0" />
+                            <LineSegment Point="50,50" />
+                        </PathFigure>
+                    </PathGeometry>
+                </Path.Data>
+            </Path>
+            <Polygon Points="75,0 120,120 0,45 150,45 30,120" Stroke="DarkBlue" StrokeThickness="1" Fill="Violet"
+                     Canvas.Left="100" Canvas.Top="50" />
+            <!-- <Polyline Points="0,0 65,0 78,-26 91,39 104,-39 117,13 130,0 195,0" Stroke="Brown" Canvas.Left="30" Canvas.Top="350"/> -->
+        </Canvas>
+
+    </Grid>
+</UserControl>

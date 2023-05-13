@@ -1,0 +1,23 @@
+<Grid xmlns="https://github.com/avaloniaui"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+      xmlns:vm="clr-namespace:game2048.av.ViewModels"
+      mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+      x:Class="game2048.av.Views.UcConfig"
+      x:DataType="vm:VmConfig"
+      ColumnDefinitions="Auto, *"
+      RowDefinitions="Auto, Auto, Auto, Auto">
+    <Design.DataContext>
+        <vm:VmConfig />
+    </Design.DataContext>
+
+    <TextBlock Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" Text="Settings" />
+
+    <TextBlock Grid.Row="1" Grid.Column="0" Text="AppendCount: " />
+    <ComboBox Grid.Row="1" Grid.Column="1" Items="{Binding AppendCounts}" SelectedItem="{Binding AppendCount}" />
+    
+    <TextBlock Grid.Row="2" Grid.Column="0" Text="Range:" />
+    <ComboBox Grid.Row="2" Grid.Column="1" Items="{Binding Ranges}" SelectedItem="{Binding Range}" />
+
+</Grid>
