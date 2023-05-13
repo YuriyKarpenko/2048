@@ -8,18 +8,16 @@
              x:Class="game2048.av.Views.MainView"
              x:DataType="vm:VmMain">
   <Design.DataContext>
-    <!-- This only sets the DataContext for the previewer in an IDE,
-         to set the actual DataContext for runtime, set the DataContext property in code (look at App.axaml.cs) -->
     <vm:VmMain />
   </Design.DataContext>
 
     <Grid RowDefinitions="Auto, Auto, *, Auto, Auto">
-
+        <!-- Toolbar -->
         <ItemsControl Grid.Row="0" Items="{Binding Cmds}">
             <ItemsControl.ItemTemplate>
                 <DataTemplate>
-                    <!-- <v:UcButton /> -->
-                    <Button Classes="cmd"/>
+                    <v:UcButton />
+                    <!-- <Button Classes="cmd"/> -->
                 </DataTemplate>
             </ItemsControl.ItemTemplate>
             <ItemsControl.ItemsPanel>
@@ -29,29 +27,7 @@
             </ItemsControl.ItemsPanel>
         </ItemsControl>
         
-        <!-- <StackPanel Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="3" Orientation="Horizontal"> -->
-        <!--     <v:UcButton></v:UcButton> -->
-        <!--     <MenuItem Icon="{StaticResource pg_Undo}" Header="Undo"></MenuItem> -->
-        <!--     ~1~ <v:UcConfig DataContext="{Binding VmConfig}" /> @1@ -->
-        <!-- -->
-        <!--     <Button Command="{Binding VmGame.CmdReset}"> -->
-        <!--         <StackPanel Orientation="Horizontal"> -->
-        <!--             <TextBlock Text="Reset" /> -->
-        <!--             <PathIcon Data="{StaticResource pg_Refresh}" /> -->
-        <!--         </StackPanel> -->
-        <!--     </Button> -->
-        <!-- -->
-        <!--     <Button Command="{Binding CmdOption}" i:Attached.Icon="mdi-cog"> -->
-        <!--     </Button> -->
-        <!-- -->
-        <!--     <ToggleButton Command="{Binding CmdOption}" CommandParameter="{Binding $self.IsChecked}"> -->
-        <!--         <StackPanel Orientation="Horizontal"> -->
-        <!--             <TextBlock Text="Options" /> -->
-        <!--             <PathIcon Data="{StaticResource pg_Settings}" /> -->
-        <!--         </StackPanel> -->
-        <!--     </ToggleButton> -->
-        <!-- </StackPanel> -->
-
+        <!-- Content -->
         <TransitioningContentControl Grid.Row="2" Content="{Binding Content^}">
             <TransitioningContentControl.DataTemplates>
                 <DataTemplate DataType="vm:VmConfig">
@@ -66,6 +42,7 @@
             </TransitioningContentControl.PageTransition>
         </TransitioningContentControl>
 
+        <!-- tests -->
         <Canvas IsVisible="False" Grid.Row="4" Background="Yellow" Width="300" Height="300">
             <!-- <Rectangle Fill="Blue" Width="63" Height="41" Canvas.Left="40" Canvas.Top="31"> -->
             <!--     <Rectangle.OpacityMask> -->

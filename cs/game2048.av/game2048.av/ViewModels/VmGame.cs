@@ -30,10 +30,22 @@ public class VmGame : VmBase
         CmdReset = ReactiveCommand.Create(OnReset);
         CmdUndo = ReactiveCommand.Create<Direct>(OnUndo, _canHistory);
         CmdNext = ReactiveCommand.Create<Direct>(OnNext);
-        CmdNextDown = new MCommandIcon(CmdNext, "pg_Arrowhead_down2") { CommandParameter = Direct.Down, HotKey = new KeyGesture(Key.Down)};
-        CmdNextLeft = new MCommandIcon(CmdNext, "pg_Arrowhead_left2") { CommandParameter = Direct.Left, HotKey = new KeyGesture(Key.Left) };
-        CmdNextRight = new MCommandIcon(CmdNext, "pg_Arrowhead_right2") { CommandParameter = Direct.Right, HotKey = new KeyGesture(Key.Right) };
-        CmdNextUp = new MCommandIcon(CmdNext, "pg_Arrowhead_up2") { CommandParameter = Direct.Up, HotKey = new KeyGesture(Key.Up) };
+        CmdNextDown = new MCommandIcon(CmdNext, "pg_Arrowhead_down2")
+        {
+            CommandParameter = Direct.Down, HotKey = new KeyGesture(Key.Down), Tooltip = "↓ Down"
+        };
+        CmdNextLeft = new MCommandIcon(CmdNext, "pg_Arrowhead_left2")
+        {
+            CommandParameter = Direct.Left, HotKey = new KeyGesture(Key.Left), Tooltip = "← Left"
+        };
+        CmdNextRight = new MCommandIcon(CmdNext, "pg_Arrowhead_right2")
+        {
+            CommandParameter = Direct.Right, HotKey = new KeyGesture(Key.Right), Tooltip = "→ Right"
+        };
+        CmdNextUp = new MCommandIcon(CmdNext, "pg_Arrowhead_up2")
+        {
+            CommandParameter = Direct.Up, HotKey = new KeyGesture(Key.Up), Tooltip = "↑ Up"
+        };
         _config = new BehaviorSubject<ConfigAv>(default);
         config.Subscribe(_config);
 

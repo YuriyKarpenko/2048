@@ -15,22 +15,23 @@
             <Setter Property="VerticalAlignment" Value="Center"></Setter>
         </Style>
         
-        <Style Selector="Button.cmd_icon" >
-            <Setter Property="Command" Value="{Binding Command}"/>
-            <Setter Property="CommandParameter" Value="{Binding CommandParameter}"/>
-            <Setter Property="HotKey" Value="{Binding HotKey}"/>
-            <Setter Property="Content">
-                <Template><v:UcIcon/></Template>
-            </Setter>
-        </Style>
-        <Style Selector="Button.cmd" >
-            <Setter Property="Command" Value="{Binding Command}"/>
-            <Setter Property="CommandParameter" Value="{Binding CommandParameter}"/>
-            <Setter Property="HotKey" Value="{Binding HotKey}"/>
-            <Setter Property="Content">
-                <Template><v:UcButtonContent/></Template>
-            </Setter>
-        </Style>
+        <!-- <Style Selector="Button.cmd_icon" > -->
+        <!--     <Setter Property="Command" Value="{ReflectionBinding Command}"/> -->
+        <!--     <Setter Property="CommandParameter" Value="{Binding CommandParameter}"/> -->
+        <!--     <Setter Property="HotKey" Value="{Binding HotKey}"/> -->
+        <!--     <Setter Property="Content"> -->
+        <!--         <Template><v:UcIcon/></Template> -->
+        <!--     </Setter> -->
+        <!-- </Style> -->
+        
+        <!-- <Style Selector="Button.cmd" > -->
+        <!--     <Setter Property="Command" Value="{ReflectionBinding Command}"/> -->
+        <!--     <Setter Property="CommandParameter" Value="{ReflectionBinding CommandParameter}"/> -->
+        <!--     <Setter Property="HotKey" Value="{ReflectionBinding HotKey}"/> -->
+        <!--     <Setter Property="Content"> -->
+        <!--         <Template><v:UcButtonContent/></Template> -->
+        <!--     </Setter> -->
+        <!-- </Style> -->
     </Application.Styles>
     
     <Application.Resources>

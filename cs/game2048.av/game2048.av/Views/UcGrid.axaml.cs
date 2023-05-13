@@ -37,9 +37,9 @@ public class UcGrid : Grid
         }
     }
 
-    static IControl? CreateChild(Grid d, object? content)
+    static Control? CreateChild(Grid d, object? content)
     {
-        var newChild = content as IControl;
+        var newChild = content as Control;
         if (newChild == null && content != null)
         {
             var dataTemplate = d.FindDataTemplate(content) ?? FuncDataTemplate.Default;

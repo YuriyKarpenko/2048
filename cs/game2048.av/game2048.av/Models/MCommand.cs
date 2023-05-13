@@ -12,7 +12,7 @@ public class MCommand
     public ICommand Command { get; }
     public object? CommandParameter { get; set; }
     public KeyGesture? HotKey { get; set; }
-    public string? Gesture { get; set; }
+    public string? Tooltip { get; set; }
 }
 
 public class MCommandIcon : MCommand
