@@ -8,6 +8,7 @@ using Avalonia.Controls.Templates;
 using game2048.av.ViewModels;
 using Avalonia.Controls;
 using Avalonia.Input;
+using Avalonia.Input.GestureRecognizers;
 
 namespace game2048.av.Views;
 
@@ -71,6 +72,11 @@ public class UcGrid : Grid
     // private readonly GestureRecognizerCollection gestures;
     public UcGrid()
     {
+        GestureRecognizers.Add(new ScrollGestureRecognizer
+        {
+            CanHorizontallyScroll = true,
+            CanVerticallyScroll = true
+        });
         Gestures.ScrollGestureEvent.Raised
             .Where((o, _) => o.Item1 is UcGame)
             // .Sample(TimeSpan.FromMilliseconds(200))  //  другой поток
@@ -90,11 +96,11 @@ public class UcGrid : Grid
         {
             Direct AsDirect(Vector v)
             {
-                return Math.Abs(v.X) > Math.Abs(v.Y)
-                    ? v.X < 0 
+                return Math.Abs(v.X) < Math.Abs(v.Y)    //  в Avalonia 11-preview5 поменяли оси
+                    ? v.X < 0   //  horisoltal
                         ? Direct.Right 
                         : Direct.Left
-                    : v.Y < 0
+                    : v.Y < 0   //  vertical
                         ? Direct.Down
                         : Direct.Up;
             }
@@ -103,7 +109,7 @@ public class UcGrid : Grid
             vm.CmdNext.Execute(d);
 
             _lock = true;
-            Task.Delay(900).ContinueWith(_ => _lock = false).ConfigureAwait(false);
+            Task.Delay(400).ContinueWith(_ => _lock = false).ConfigureAwait(false);
         }
     }
 
